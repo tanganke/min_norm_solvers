@@ -17,4 +17,15 @@ $$\alpha^{t+1} = \alpha^t - \eta \; \nabla_{\alpha} \| \sum_{i=1}^m \text{softma
 
 ## How to use
 
+```python
+vecs : List[torch.Tensor]= ... # list of vectors
+
+# `solver_func` can be `gradient_solvers.gdquad_solv_single`, 
+# `min_norm_solvers.MinNormSolver.find_min_norm_element` or `min_norm_solvers.MinNormSolver.find_min_norm_element_FW`.
+import ... as solver_func
+# weights are the weights assign to each vectors, cost is the squere norm of the weighted sum vector
+weights, cost = solver_func(vecs)
+norm = quadratic_norm(vecs, weights)
+```
+
 Please refer to the `example.py` file.  
